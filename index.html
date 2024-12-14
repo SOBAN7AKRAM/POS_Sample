@@ -1,0 +1,942 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>POS System</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            rel="stylesheet">
+        <style> 
+
+       /* Light Mode (Default) */
+body {
+    background-color: #fff; /* Light background for light mode */
+    color: #000; /* Dark text for readability in light mode */
+}
+
+.navbar-dark-blue {
+    background-color: #002f6c; /* Original light sidebar background */
+    height: 100vh;
+}
+
+.btn {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #fd7e14;
+    color: #fff;
+}
+
+.navbar-dark-blue .nav-link {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-dark-blue .nav-link:hover {
+    background-color: #fd7e14;
+    color: #fff;
+}
+
+.navbar-dark-blue .nav-item.active .nav-link {
+    background-color: #fd7e14;
+    color: white;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 170px;
+}
+
+footer button {
+    transition: background-color 0.3s ease;
+}
+
+.icon-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.icon-container i {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Dark Mode (when body.bg-dark is applied) */
+body.bg-dark {
+    background-color: #121212; /* Dark background for dark mode */
+    color: #e0e0e0; /* Light text for readability */
+}
+
+/* Sidebar (Dark Mode) */
+body.bg-dark .navbar-dark-blue {
+    background-color: #1e1e1e; /* Dark sidebar background */
+    color: white;
+}
+
+body.bg-dark .navbar-dark-blue .nav-link,
+body.bg-dark .navbar-dark-blue .nav-item.active .nav-link {
+    color: white;
+}
+
+body.bg-dark .navbar-dark-blue .nav-link:hover {
+    background-color: #fd7e14;
+    color: #fff;
+}
+
+body.bg-dark .navbar-dark-blue .nav-item.active .nav-link {
+    background-color: #fd7e14;
+    color: white;
+}
+body.d-flex{
+    background-color: black;
+}
+
+/* Buttons (Dark Mode) */
+body.bg-dark .btn {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.bg-dark .btn:hover {
+    background-color: #fd7e14;
+    color: #fff;
+}
+
+
+
+/* Footer (Dark Mode) */
+body.bg-dark footer {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+body.bg-dark footer button {
+    transition: background-color 0.3s ease;
+}
+
+/* Icon container (Dark Mode) */
+body.bg-dark .icon-container i {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* Table (Dark Mode) */
+body.bg-dark .table {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+
+body.bg-dark .table th, body.bg-dark .table td {
+    border-color: #444;
+}
+
+body.bg-dark .table-bordered {
+    border-color: #444;
+}
+
+/* Cards (Dark Mode) */
+body.bg-dark .card {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+
+body.bg-dark .card .card-body {
+    background-color: #333;
+}
+
+
+
+.payment-summary {
+            background-color: #ff9800;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+.payment-summary div {
+            margin-bottom: 10px;
+        }
+.btn-custom {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+        }
+.btn-custom:hover {
+            background-color: #e68900;
+}
+
+
+/* Light Mode */
+body.light-mode {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+body.light-mode .modal-content {
+    background-color: #fff;
+    color: #000;
+}
+
+body.light-mode .btn-custom {
+    background-color: #007bff;
+    color: white;
+}
+
+body.light-mode .modal-header {
+    background-color: #007bff;
+    color: white;
+}
+
+body.light-mode .form-control {
+    background-color: #fff;
+    color: #000;
+}
+
+body.light-mode .form-select {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #343a40;
+    color: #fff;
+}
+
+body.dark-mode .modal-content {
+    background-color: #495057;
+    color: #fff;
+}
+
+body.dark-mode .btn-custom {
+    background-color: #28a745;
+    color: white;
+}
+
+body.dark-mode .modal-header {
+    background-color: #28a745;
+    color: white;
+}
+
+body.dark-mode .form-control {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+body.dark-mode .form-select {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+body.dark-mode .modal-body {
+    background-color: #495057;
+}
+
+/* Ensure text is visible in both modes */
+body.light-mode, body.dark-mode {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+
+.modal-content {
+            position: relative;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h3 {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-bottom: 1px solid #ccc;
+            justify-content: space-around;
+        }
+
+        .tab {
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+        }
+
+        .tab-content {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        table th, table td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .close-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            border-radius: 4px;
+        }
+
+        .close-btn:hover {
+            background: darkred;
+        }
+
+        .close-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #000;
+        }
+
+        .close-icon:hover {
+            color: red;
+        }
+
+    </style>
+    </head>
+    <body>
+        <div class="d-flex vh-90">
+            <!-- Sidebar -->
+            <div class="navbar-dark-blue text-white d-flex flex-column p-3"
+                style="width: 170px;">
+                <div class="icon-container">
+                    <i class="fa-solid fa-cogs"></i>
+                    <a href="setting.html">
+                        <button class="btn btn-light w-100 mt-2"
+                            style="text-align: center;">Settings</button>
+                    </a>
+                </div>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item mt-4">
+                        <a href="#" class="nav-link text-white active">
+                            <i class="fa-solid fa-dollar-sign my-2"></i> Sales
+                        </a>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <a href="register.html" class="nav-link text-white">
+                            <i class="fa-solid fa-pen-to-square my-2"></i>
+                            Register
+                        </a>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <a href="customer.html" class="nav-link text-white">
+                            <i class="fa-solid fa-pen-to-square my-2"></i>
+                            Customer
+                        </a>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <a href="login.html" class="nav-link text-white">
+                            <i class="fa-solid fa-right-from-bracket my-2"></i>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="flex-grow-1 d-flex flex-column p-3 bg-light">
+                <!-- Header -->
+                <div
+                    class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex align-items-center">
+                        <strong>Location:</strong>
+                        <span class="ms-2">Faddishbuilder</span>
+                    </div>
+                    <button class="btn btn-primary"
+                        id="liveDateTimeButton"></button>
+                    <div>
+                        <i class="fas fa-home mx-2"></i>
+                        <i class="fas fa-bell mx-2"></i>
+                        <i class="fas fa-user mx-2"></i>
+                        <i class="fas fa-cog mx-2"></i>
+                        <i class="fas fa-copy mx-2"></i>
+                        <i class="fas fa-ellipsis-h mx-2"></i>
+                    </div>
+                    <button class="btn btn-danger">Add Expense</button>
+                </div>
+
+                <!-- Main Section -->
+                <div class="d-flex">
+                    <!-- Left Section -->
+                    <div class="w-50 pe-3">
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-user me-2"></i><b> Walk-In
+                                    Customer: </b>
+                            </label>
+                            <select class="form-select"></select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Select Service
+                                Staff:</label>
+                            <input type="text" class="form-control"
+                                placeholder="Enter Product name / SKU / Scan bar code">
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" class="text-center">No
+                                        products selected</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-between mt-3">
+                            <div>
+                                <p>Items: <strong>0.00</strong></p>
+                                <p>Discount (-): <strong>0.00</strong></p>
+                            </div>
+                            <div>
+                                <p>Total: <strong>0.00</strong></p>
+                                <p>Shipping (+): <strong>0.00</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Section -->
+                    <div class="w-50">
+                        <div class="d-flex mb-3">
+                            <button class="btn btn-primary mx-2"
+                                style="width: 200px;">Category</button>
+                            <button class="btn btn-primary"
+                                style="width: 200px;">Brands</button>
+                        </div>
+                        <div class="row row-cols-4 g-2" id="product-container">
+                            <!-- Sample Products -->
+                            <div class="col product-card">
+                                <div class="card text-center">
+                                    <img src="https://via.placeholder.com/100"
+                                        class="card-img-top" alt="Product">
+                                    <div class="card-body">
+                                        <p class="card-text">Product 1</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Repeat as necessary -->
+                            <div class="col product-card">
+                                <div class="card text-center">
+                                    <img src="https://via.placeholder.com/100"
+                                        class="card-img-top" alt="Product">
+                                    <div class="card-body">
+                                        <p class="card-text">Product 2</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col product-card">
+                                <div class="card text-center">
+                                    <img src="https://via.placeholder.com/100"
+                                        class="card-img-top" alt="Product">
+                                    <div class="card-body">
+                                        <p class="card-text">Product 3</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col product-card">
+                                <div class="card text-center">
+                                    <img src="https://via.placeholder.com/100"
+                                        class="card-img-top" alt="Product">
+                                    <div class="card-body">
+                                        <p class="card-text">Product 4</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col product-card">
+                                <div class="card text-center">
+                                    <img src="https://via.placeholder.com/100"
+                                        class="card-img-top" alt="Product">
+                                    <div class="card-body">
+                                        <p class="card-text">Product 5</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col product-card">
+                                <div class="card text-center">
+                                    <img src="https://via.placeholder.com/100"
+                                        class="card-img-top" alt="Product">
+                                    <div class="card-body">
+                                        <p class="card-text">Product 6</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col product-card">
+                                <div class="card text-center">
+                                    <img src="https://via.placeholder.com/100"
+                                        class="card-img-top" alt="Product">
+                                    <div class="card-body">
+                                        <p class="card-text">Product 7</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col product-card">
+                                <div class="card text-center">
+                                    <img src="https://via.placeholder.com/100"
+                                        class="card-img-top" alt="Product">
+                                    <div class="card-body">
+                                        <p class="card-text">Product 8</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <footer
+                    class="d-flex justify-content-between align-items-center py-3 mt-auto">
+                    <!-- Left Side: Action Buttons -->
+                    <div>
+                        <button
+                            class="btn btn-secondary me-2">Quotation</button>
+                        <button class="btn btn-primary">Multiple Pay</button>
+                        <button class="btn btn-danger">Cancel</button>
+                        <button class="btn btn-custom" data-bs-toggle="modal"
+                            data-bs-target="#paymentModal">Open Payment</button>
+  
+
+                    </div>
+
+                    <!-- Center: Total Payable Display -->
+                    <div class="text-center">
+                        <p class="m-0 fw-bold">Total Payable: <span
+                                class="text-success">0.00</span></p>
+                    </div>
+
+                    <!-- Right Side: Recent Transactions Button -->
+                    <div class="mx-4">
+                        <!-- <button class="btn btn-orange" 
+                            style="background-color: purple; color: #fff;">Recent
+                            Transactions</button> -->
+
+                            <button  style="background-color: purple; color: #fff;" class="btn btn-custom btn-orange" data-bs-toggle="modal" data-bs-target="#transactionsModal">Recent Transactions</button>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="paymentModal" tabindex="-1"
+                        aria-labelledby="paymentModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"
+                                        id="paymentModalLabel">Payment</h5>
+                                    <button type="button" class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body"
+                                    style="max-height: 600px; overflow-y: auto;">
+                                    <div class="container mt-4">
+                                        <div class="row">
+                                            <!-- Left Side -->
+                                            <div class="col-md-8">
+                                                <p>Advance Balance: J$ 0.00</p>
+                                                <div class="border p-2 mb-3">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-6">
+                                                            <label for="amount"
+                                                                class="form-label">Amount:*</label>
+                                                            <input type="number"
+                                                                class="form-control"
+                                                                id="amount"
+                                                                value="22.00">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label
+                                                                for="paymentMethod"
+                                                                class="form-label">Payment
+                                                                Method:*</label>
+                                                            <select
+                                                                class="form-select"
+                                                                id="paymentMethod">
+                                                                <option>Cash</option>
+                                                                <option>Card</option>
+                                                                <option>Bank
+                                                                    Transfer</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="paymentNote"
+                                                            class="form-label">Payment
+                                                            Note:</label>
+                                                        <textarea
+                                                            class="form-control"
+                                                            id="paymentNote"
+                                                            rows="2"></textarea>
+                                                    </div>
+                                                </div>
+                                                <button type="button"
+                                                    class="btn btn-custom mb-3">Add
+                                                    Payment Row</button>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label for="invoiceNote"
+                                                            class="form-label">Invoice
+                                                            Note:</label>
+                                                        <textarea
+                                                            class="form-control"
+                                                            id="invoiceNote"
+                                                            rows="2"></textarea>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="staffNote"
+                                                            class="form-label">Staff
+                                                            Note:</label>
+                                                        <textarea
+                                                            class="form-control"
+                                                            id="staffNote"
+                                                            rows="2"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Right Side -->
+                                            <div class="col-md-4"
+                                                style="justify-content: center;">
+                                                <div class="payment-summary">
+                                                    <div>Total Items:</div>
+                                                    <div>2.00</div>
+                                                    <hr>
+                                                    <div>Total Payable:</div>
+                                                    <div>J$ 22.00</div>
+                                                    <hr>
+                                                    <div>Total Paying:</div>
+                                                    <div>J$ 22.00</div>
+                                                    <hr>
+                                                    <div>Change Return:</div>
+                                                    <div>J$ 0.00</div>
+                                                    <hr>
+                                                    <div>Balance:</div>
+                                                    <div>J$ 0.00</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Footer Buttons -->
+                                        <div
+                                            class="d-flex justify-content-end mt-4">
+                                            <button type="button"
+                                                class="btn btn-secondary me-2"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button"
+                                                class="btn btn-custom">Finalize
+                                                Payment</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="transactionsModal" tabindex="-1" aria-labelledby="transactionsModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Close Icon -->
+                                <span class="close-icon" data-bs-dismiss="modal" aria-label="Close">✖</span>
+                    
+                                <!-- Modal Header -->
+                                <h3 id="transactionsModalLabel">Recent Transactions</h3>
+                    
+                                <!-- Tabs -->
+                                <ul class="tabs">
+                                    <li class="tab active" data-tab="final">✔ Final</li>
+                                    <li class="tab" data-tab="quotation">➳ Quotation</li>
+                                    <li class="tab" data-tab="draft">➳ Draft</li>
+                                </ul>
+                    
+                                <!-- Tab Contents -->
+                                <div class="tab-content active" id="final">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Customer</th>
+                                                <th>Amount</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>0005</td>
+                                                <td>(Walk-In Customer)</td>
+                                                <td>22.00</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary" title="Edit">✏️</button>
+                                                    <button class="btn btn-sm btn-outline-danger" title="Delete">🗑️</button>
+                                                    <button class="btn btn-sm btn-outline-info" title="View">📜</button>
+                                                </td>
+                                            </tr>
+                                            <!-- Add more rows as needed -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                    
+                            <!-- Bottom-Right Close Button -->
+                        
+                        </div>
+                    </div>
+
+                </footer>
+
+            </div>
+        </div>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+        // Handle Product Suggestion Toggle
+        const productCards = document.querySelectorAll('.product-card');
+        const showSuggestions = localStorage.getItem('showProductSuggestions') === 'true';
+
+        function toggleProductSuggestions(show) {
+            productCards.forEach(card => {
+                card.classList.toggle('hidden', !show);
+            });
+        }
+
+        toggleProductSuggestions(showSuggestions);
+
+           // Apply Dark Mode from LocalStorage
+           window.onload = function() {
+    const darkModeStatus = localStorage.getItem('darkMode');
+    if (darkModeStatus === 'enabled') {
+        document.body.classList.add('bg-dark', 'text-black');
+    } else {
+        document.body.classList.remove('bg-dark', 'text-white');
+    }
+};
+    </script>
+
+        <script>
+    function toggleTheme() {
+        var body = document.body;
+        body.classList.toggle('dark-mode');
+        body.classList.toggle('light-mode');
+    }
+
+    // Set default theme to light mode
+    document.body.classList.add('light-mode');
+</script>
+
+<script>
+    // Tabs functionality
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+            // Remove active class from all tabs and contents
+            tabs.forEach(t => t.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+
+            // Add active class to clicked tab and corresponding content
+            this.classList.add('active');
+            document.getElementById(this.dataset.tab).classList.add('active');
+        });
+    });
+</script>
+
+        <script>
+    function updateDateTime() {
+        const now = new Date();
+        const date = now.toLocaleDateString(); // Format: MM/DD/YYYY
+        const time = now.toLocaleTimeString(); // Format: HH:MM:SS AM/PM
+        const formattedDateTime = `${date} ${time}`;
+
+        // Update the button text
+        document.getElementById('liveDateTimeButton').innerText = formattedDateTime;
+    }
+
+    // Call the updateDateTime function every second
+    setInterval(updateDateTime, 1000);
+
+    // Initial call to display the time immediately when the page loads
+    updateDateTime();
+</script>
+        <script>
+    const url = new URL(
+    "http://pos.test/connector/api/product"
+);
+
+const params = {
+    "order_by": "et",
+    "order_direction": "molestiae",
+    "brand_id": "sapiente",
+    "category_id": "ad",
+    "sub_category_id": "eligendi",
+    "location_id": "1",
+    "selling_price_group": "harum",
+    "send_lot_detail": "eum",
+    "name": "est",
+    "sku": "autem",
+    "per_page": "10",
+};
+
+// Add query parameters to the URL
+Object.keys(params)
+    .forEach(key => url.searchParams.append(key, params[key]));
+
+// Prepare headers
+const headers = {
+    "Authorization": "Bearer {access_token}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+// Create and send XMLHttpRequest
+const xhr = new XMLHttpRequest();
+xhr.open("GET", url, true);
+
+// Set headers
+Object.keys(headers).forEach(key => {
+    xhr.setRequestHeader(key, headers[key]);
+});
+
+// Handle the response
+xhr.onreadystatechange = () => {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            console.log(response);
+        } else {
+            console.error("Request failed with status:", xhr.status);
+        }
+    }
+};
+
+// Send the request
+xhr.send();
+
+</script>
+
+
+<script>
+    // Authentication endpoint and credentials
+    const authUrl = "https://pos.ultimatefosters.com/oauth/token";
+    const clientId = "7";
+    const clientSecret = "mU57iuPUUqpyqougWjmbDGc20MQlDmJLvZq371id";
+    const productUrl = "https://pos.ultimatefosters.com/api/products";
+
+    // Function to get access token
+    async function getAccessToken() {
+        const payload = {
+            client_id: clientId,
+            client_secret: clientSecret,
+            grant_type: "client_credentials",
+        };
+
+        try {
+            const response = await fetch(authUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Access Token Response:", data);
+                return data.access_token;
+            } else {
+                const errorData = await response.json();
+                console.error("Authentication Failed:", errorData);
+                throw new Error("Unable to fetch access token");
+            }
+        } catch (error) {
+            console.error("Error during authentication:", error.message);
+            throw error;
+        }
+    }
+
+    // Function to fetch products
+    async function fetchProducts(accessToken) {
+        try {
+            const response = await fetch(productUrl, {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`,
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Products:", data);
+            } else {
+                const errorData = await response.json();
+                console.error("Failed to Fetch Products:", errorData);
+            }
+        } catch (error) {
+            console.error("Error fetching products:", error.message);
+        }
+    }
+
+    // Main execution flow
+    async function main() {
+        try {
+            const accessToken = await getAccessToken();
+            await fetchProducts(accessToken);
+        } catch (error) {
+            console.error("Error in main flow:", error.message);
+        }
+    }
+
+    main();
+</script>
+
+
+    </body>
+</html>

@@ -4,7 +4,7 @@
         document.querySelectorAll('.increment').forEach(button => {
             button.addEventListener('click', function () {
                 let input = this.closest('td').querySelector('.quantity-input');
-                input.value = parseInt(input.value) ;
+                input.value = parseInt(input.value) +1;
             });
         });
 
@@ -12,7 +12,7 @@
             button.addEventListener('click', function () {
                 let input = this.closest('td').querySelector('.quantity-input');
                 if (parseInt(input.value) > 1) {
-                    input.value = parseInt(input.value) ;
+                    input.value = parseInt(input.value)-1 ;
                 }
             });
         });

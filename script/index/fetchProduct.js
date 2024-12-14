@@ -1,4 +1,4 @@
-// const { copyFileSync } = require("original-fs");
+
 
 const url = new URL(
     "https://pos.faddishbuilder.com/connector/api/product"
@@ -75,16 +75,15 @@ async function showProductsCard() {
                 card.appendChild(cardBody)
                 productCard.appendChild(card)
                 container.appendChild(productCard)
-               
             })
         })
     });
-showSelectedProducts();
+    showSelectedProducts();
 }
 
 showProductsCard();
 
-let selectedProducts = []; // Array to store selected product IDs
+let selectedProducts = []; // Array to store selected products
 
 function showSelectedProducts() {
     const productCards = document.querySelectorAll('.product-card');
@@ -92,9 +91,24 @@ function showSelectedProducts() {
         productCard.addEventListener('click', (e) => {
             const productId = productCard.dataset.productId;
             const sizeId = productCard.dataset.sizeId;
+            // Check if the product with the same productId and sizeId is already in the selectedProducts list
+            const isProductAlreadySelected = selectedProducts.some(p => p.productId === productId && p.sizeId === sizeId);
+            if (isProductAlreadySelected) {
+                return; // If the product is already selected, do not add it again
+            }
+
+            const product = products_to_show.find(p => p.id == productId);
+            const variation = product?.product_variations[0].variations.find(v => v.id == sizeId);
+            const name = product?.name;
+            const img = product?.image_url;
+            const size = variation?.name;
+            const price = variation?.default_sell_price;
+            const quantity = variation?.variation_location_details[0]?.qty_available;
+            const currentQuantity = 1;
+            const currentPrice = price * currentQuantity;
 
             // Store selected product details
-            selectedProducts.push({ productId, sizeId });
+            selectedProducts.push({ productId, sizeId, name, img, price, size, quantity, currentQuantity, currentPrice });
 
             // Call function to render table rows
             renderProductRows();
@@ -108,53 +122,116 @@ function renderProductRows() {
 
     selectedProducts.forEach(product => {
         const row = document.createElement('tr');
-        const nam = products_to_show.find(p => p.id == product.productId)?.name;
-        const size = products_to_show.find(p => p.id == product.productId)?.product_variations[0].variations.find(v => v.id == product.sizeId)?.name;
         row.innerHTML = `
             <td>
                 <div class="d-flex align-items-center">
-                    <img src="https://via.placeholder.com/60" alt="Product Image" class="product-img me-3">
+                    <img src=${product.img} alt="Product Image" class="product-img me-3">
                     <div>
-                        <strong>${nam} (${size})</strong><br>
-                        <span class="text-muted">7.00 Pc(s) in stock</span>
+                        <strong>${product.name} (${product.size})</strong><br>
+                        <span class="text-muted">${Math.floor(product.quantity)} Pc(s) in stock</span>
                     </div>
                 </div>
             </td>
             <td>
                 <div class="d-flex align-items-center">
                     <button class="btn btn-outline-secondary btn-sm decrement"><i class="bi bi-dash"></i></button>
-                    <input type="number" value="1" min="1" class="form-control form-control-sm mx-2 quantity-input">
+                    <input type="number" value=${product.currentQuantity} min="1" class="form-control form-control-sm mx-2 quantity-input" data-product-id="${product.productId}" data-size-id="${product.sizeId}">
                     <button class="btn btn-outline-secondary btn-sm increment"><i class="bi bi-plus"></i></button>
                 </div>
             </td>
-            <td>J$ ${getProductPrice(product.productId, product.sizeId)}</td>
+            <td>J$ ${product.currentPrice}</td>
             <td>
-                <span class="remove-btn"><i class="bi bi-x-circle"></i></span>
+                <span class="remove-btn" data-product-id="${product.productId}" data-size-id="${product.sizeId}"><i class="bi bi-x-circle"></i></span>
             </td>
         `;
 
         tbody.appendChild(row);
     });
+    handleQuantityChange();
+    handleProductRemoval();
+    updateTotalValesText();
 }
 
-function getProductPrice(productId, sizeId) {
-    // Mock function to get product price based on productId and sizeId
-    // Replace with actual logic to fetch the price
-    return productId === '1' && sizeId === 'Large' ? '12.00' : '10.00';
+function handleQuantityChange() {
+    document.querySelectorAll('.increment').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const input = e.target.closest('div').querySelector('input'); // Find the input field within the same container
+            const productId = input.getAttribute('data-product-id');
+            const sizeId = input.getAttribute('data-size-id');
+            
+            // Find the corresponding product in selectedProducts
+            const product = selectedProducts.find(p => p.productId === productId && p.sizeId === sizeId);
+            if (!product) {
+                console.error("Product not found in selectedProducts.");
+                return;
+            }
+
+            if (product.currentQuantity < product.quantity) {
+                product.currentQuantity += 1; // Increment the quantity
+                product.currentPrice = product.currentQuantity * product.price; // Update the price
+            }
+
+            // Update the input value
+            input.value = product.currentQuantity;
+            renderProductRows(); // Re-render the rows to update the price
+        });
+    });
+
+    document.querySelectorAll('.decrement').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const input = e.target.closest('div').querySelector('input'); // Find the input field within the same container
+            const productId = input.getAttribute('data-product-id');
+            const sizeId = input.getAttribute('data-size-id');
+            
+            // Find the corresponding product in selectedProducts
+            const product = selectedProducts.find(p => p.productId === productId && p.sizeId === sizeId);
+            if (!product) {
+                console.error("Product not found in selectedProducts.");
+                return;
+            }
+
+            if (product.currentQuantity > 1) {
+                product.currentQuantity -= 1; // Decrement the quantity
+                product.currentPrice = product.currentQuantity * product.price; // Update the price
+            }
+
+            // Update the input value
+            input.value = product.currentQuantity;
+            renderProductRows(); // Re-render the rows to update the price
+        });
+    });
+}
+
+function handleProductRemoval() {
+    document.querySelectorAll('.remove-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const productId = e.target.closest('.remove-btn').getAttribute('data-product-id');
+            const sizeId = e.target.closest('.remove-btn').getAttribute('data-size-id');
+            
+            // Remove the product from selectedProducts
+            selectedProducts = selectedProducts.filter(p => !(p.productId === productId && p.sizeId === sizeId));
+            
+            // Re-render the rows
+            renderProductRows();
+        });
+    });
 }
 
 // Initialize product selection and event listeners
 showSelectedProducts();
 
+// update total values
+function updateTotalValesText(){
+    const item = document.getElementById('total_items');
+    const price = document.getElementById('total_price');
+    selectedProducts.forEach(product => {
+        item.innerHTML = selectedProducts.reduce((acc, product) => acc + product.currentQuantity, 0);
+        price.innerHTML = selectedProducts.reduce((acc, product) => acc + product.currentPrice, 0);
+    });
+}
+
+// expose selected products
+window.selectedProducts = selectedProducts;
 
 
 
-// product.product_variations.forEach(variat => {
-//     variat.variations.forEach(p => {
-//         // console.log(p.default_sell_price)
-//         console.log(p.name)
-//         // p.variation_location_details.forEach(l => {
-//         //     console.log(l.qty_available)
-//         // })
-//     })
-// })

@@ -733,77 +733,18 @@ body.light-mode, body.dark-mode {
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <script>
-        // Handle Product Suggestion Toggle
-        const productCards = document.querySelectorAll('.product-card');
-        const showSuggestions = localStorage.getItem('showProductSuggestions') === 'true';
+        <script src="./script/index/suggestion.js"></script>
 
-        function toggleProductSuggestions(show) {
-            productCards.forEach(card => {
-                card.classList.toggle('hidden', !show);
-            });
-        }
+        <script src="./script/index/toggleTheme.js"></script>
 
-        toggleProductSuggestions(showSuggestions);
+        <script src="./script/index/tabsFunct.js"></script>
 
-           // Apply Dark Mode from LocalStorage
-           window.onload = function() {
-    const darkModeStatus = localStorage.getItem('darkMode');
-    if (darkModeStatus === 'enabled') {
-        document.body.classList.add('bg-dark', 'text-black');
-    } else {
-        document.body.classList.remove('bg-dark', 'text-white');
-    }
-};
-    </script>
+        <script src="./script/index/dateTime.js"></script>
 
-        <script>
-    function toggleTheme() {
-        var body = document.body;
-        body.classList.toggle('dark-mode');
-        body.classList.toggle('light-mode');
-    }
+        <!-- fetch product -->
+        <script src="./script/index/fetchProduct.js"></script>
 
-    // Set default theme to light mode
-    document.body.classList.add('light-mode');
-</script>
-
-<script>
-    // Tabs functionality
-    const tabs = document.querySelectorAll('.tab');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function () {
-            // Remove active class from all tabs and contents
-            tabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
-
-            // Add active class to clicked tab and corresponding content
-            this.classList.add('active');
-            document.getElementById(this.dataset.tab).classList.add('active');
-        });
-    });
-</script>
-
-        <script>
-    function updateDateTime() {
-        const now = new Date();
-        const date = now.toLocaleDateString(); // Format: MM/DD/YYYY
-        const time = now.toLocaleTimeString(); // Format: HH:MM:SS AM/PM
-        const formattedDateTime = `${date} ${time}`;
-
-        // Update the button text
-        document.getElementById('liveDateTimeButton').innerText = formattedDateTime;
-    }
-
-    // Call the updateDateTime function every second
-    setInterval(updateDateTime, 1000);
-
-    // Initial call to display the time immediately when the page loads
-    updateDateTime();
-</script>
-        <script>
+        <!-- <script>
     const url = new URL(
     "http://pos.test/connector/api/product"
 );
@@ -857,10 +798,10 @@ xhr.onreadystatechange = () => {
 // Send the request
 xhr.send();
 
-</script>
+</script> -->
 
 
-<script>
+<!-- <script>
     // Authentication endpoint and credentials
     const authUrl = "https://pos.ultimatefosters.com/oauth/token";
     const clientId = "7";
@@ -935,7 +876,7 @@ xhr.send();
     }
 
     main();
-</script>
+</script> -->
 
 
     </body>

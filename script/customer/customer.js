@@ -18,4 +18,6 @@ if (selectedProducts.length === 0) {
                         `;
         tbody.appendChild(row);
     });
+    totalPayable = document.getElementById('total_payable');
+    totalPayable.innerHTML = `J$ ${selectedProducts.reduce((acc, product) => acc + product.currentPrice, 0)}`;
 }

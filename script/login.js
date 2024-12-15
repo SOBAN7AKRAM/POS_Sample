@@ -57,4 +57,4 @@
          console.error('Login failed:', error.response?.data || error.message);
          output.innerText = 'Login failed. Please check your credentials.';
      }
- });
+});

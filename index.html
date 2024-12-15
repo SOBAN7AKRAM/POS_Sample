@@ -9,6 +9,7 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
         /* Light Mode (Default) */
@@ -399,7 +400,7 @@
                     </a>
                 </li>
                 <li class="nav-item mt-4">
-                    <a href="login.html" class="nav-link text-white">
+                    <a class="nav-link text-white logout-link">
                         <i class="fa-solid fa-right-from-bracket my-2"></i>
                         Logout
                     </a>
@@ -595,26 +596,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Invoice Modal -->
-            <div class="modal fade" id="invoiceModal" tabindex="-1" aria-labelledby="invoiceModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="invoiceModalLabel">Invoice</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body" id="invoiceContent">
-                            <!-- Invoice content will be populated here -->
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="saveInvoiceBtn">Print</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="modal fade" id="transactionsModal" tabindex="-1" aria-labelledby="transactionsModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
@@ -672,6 +653,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="./script/index//quantity.js"></script>
+    
     <script src="./script/index/suggestion.js"></script>
 
     <script src="./script/index/toggleTheme.js"></script>
@@ -684,148 +666,7 @@
     <script src="./script/index/fetchProduct.js"></script>
 
     <script src="./script/index/payment.js"></script>
-
-    <!-- <script>
-        // Add event listener to the payment button
-        document.getElementById('paymentBtn').addEventListener('click', handlePayment);
-    </script> -->
-
-
-
-    <!-- <script>
-    const url = new URL(
-    "http://pos.test/connector/api/product"
-);
-
-const params = {
-    "order_by": "et",
-    "order_direction": "molestiae",
-    "brand_id": "sapiente",
-    "category_id": "ad",
-    "sub_category_id": "eligendi",
-    "location_id": "1",
-    "selling_price_group": "harum",
-    "send_lot_detail": "eum",
-    "name": "est",
-    "sku": "autem",
-    "per_page": "10",
-};
-
-// Add query parameters to the URL
-Object.keys(params)
-    .forEach(key => url.searchParams.append(key, params[key]));
-
-// Prepare headers
-const headers = {
-    "Authorization": "Bearer {access_token}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-// Create and send XMLHttpRequest
-const xhr = new XMLHttpRequest();
-xhr.open("GET", url, true);
-
-// Set headers
-Object.keys(headers).forEach(key => {
-    xhr.setRequestHeader(key, headers[key]);
-});
-
-// Handle the response
-xhr.onreadystatechange = () => {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            console.log(response);
-        } else {
-            console.error("Request failed with status:", xhr.status);
-        }
-    }
-};
-
-// Send the request
-xhr.send();
-
-</script> -->
-
-
-    <!-- <script>
-    // Authentication endpoint and credentials
-    const authUrl = "https://pos.ultimatefosters.com/oauth/token";
-    const clientId = "7";
-    const clientSecret = "mU57iuPUUqpyqougWjmbDGc20MQlDmJLvZq371id";
-    const productUrl = "https://pos.ultimatefosters.com/api/products";
-
-    // Function to get access token
-    async function getAccessToken() {
-        const payload = {
-            client_id: clientId,
-            client_secret: clientSecret,
-            grant_type: "client_credentials",
-        };
-
-        try {
-            const response = await fetch(authUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                },
-                body: JSON.stringify(payload),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                console.log("Access Token Response:", data);
-                return data.access_token;
-            } else {
-                const errorData = await response.json();
-                console.error("Authentication Failed:", errorData);
-                throw new Error("Unable to fetch access token");
-            }
-        } catch (error) {
-            console.error("Error during authentication:", error.message);
-            throw error;
-        }
-    }
-
-    // Function to fetch products
-    async function fetchProducts(accessToken) {
-        try {
-            const response = await fetch(productUrl, {
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${accessToken}`,
-                    "Accept": "application/json",
-                    "Content-Type": "application/json",
-                },
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                console.log("Products:", data);
-            } else {
-                const errorData = await response.json();
-                console.error("Failed to Fetch Products:", errorData);
-            }
-        } catch (error) {
-            console.error("Error fetching products:", error.message);
-        }
-    }
-
-    // Main execution flow
-    async function main() {
-        try {
-            const accessToken = await getAccessToken();
-            await fetchProducts(accessToken);
-        } catch (error) {
-            console.error("Error in main flow:", error.message);
-        }
-    }
-
-    main();
-</script> -->
-
+    <script src="./script/logout.js"></script>
 
 </body>
 

@@ -51,7 +51,7 @@
 
         footer {
             position: absolute;
-            bottom: 0;
+            bottom: -50;
             right: 0;
             left: 170px;
         }
@@ -260,6 +260,10 @@
             font-size: 14px;
         }
 
+        /* Ensures the footer sticks to the bottom */
+
+
+
 
         .modal-content {
             position: relative;
@@ -408,79 +412,82 @@
             </ul>
         </div>
 
-        <!-- Main Content -->
-        <div class="flex-grow-1 d-flex flex-column p-3 bg-light">
-            <!-- Header -->
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="d-flex align-items-center">
-                    <strong>Location:</strong>
-                    <span class="ms-2">Faddishbuilder</span>
-                </div>
-                <button class="btn btn-primary" id="liveDateTimeButton"></button>
-                <div>
-                    <i class="fas fa-home mx-2"></i>
-                    <i class="fas fa-bell mx-2"></i>
-                    <i class="fas fa-user mx-2"></i>
-                    <i class="fas fa-cog mx-2"></i>
-                    <i class="fas fa-copy mx-2"></i>
-                    <i class="fas fa-ellipsis-h mx-2"></i>
-                </div>
-                <button class="btn btn-danger">Add Expense</button>
+<!-- Main Content -->
+<div class="d-flex flex-column bg-light" style="margin-left: 15%; width: 85%; padding: 1rem;">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex align-items-center">
+            <strong>Location:</strong>
+            <span class="ms-2">Faddishbuilder</span>
+        </div>
+        <button class="btn btn-primary" id="liveDateTimeButton"></button>
+        <div>
+            <i class="fas fa-home mx-2"></i>
+            <i class="fas fa-bell mx-2"></i>
+            <i class="fas fa-user mx-2"></i>
+            <i class="fas fa-cog mx-2"></i>
+            <i class="fas fa-copy mx-2"></i>
+            <i class="fas fa-ellipsis-h mx-2"></i>
+        </div>
+        <button class="btn btn-danger">Add Expense</button>
+    </div>
+
+    <!-- Main Section -->
+    <div class="d-flex">
+        <!-- Left Section -->
+        <div class="w-50 pe-3">
+            <div class="mb-3">
+                <label class="form-label">
+                    <i class="fas fa-user me-2"></i><b> Walk-In Customer: </b>
+                </label>
+                <select class="form-select"></select>
             </div>
-
-            <!-- Main Section -->
-            <div class="d-flex">
-                <!-- Left Section -->
-                <div class="w-50 pe-3">
-                    <div class="mb-3">
-                        <label class="form-label">
-                            <i class="fas fa-user me-2"></i><b> Walk-In
-                                Customer: </b>
-                        </label>
-                        <select class="form-select"></select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Select Service
-                            Staff:</label>
-                        <input type="text" class="form-control" placeholder="Enter Product name / SKU / Scan bar code">
-                    </div>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Quantity</th>
-                                <th>Subtotal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                    <div class="d-flex justify-content-between mt-3">
-                        <div>
-                            <p>Items: <strong id="total_items">0.00</strong></p>
-                            <p>Discount (-): <strong>0.00</strong></p>
-                        </div>
-                        <div>
-                            <p>Total: <strong id="total_price">0.00</strong></p>
-                            <p>Shipping (+): <strong>0.00</strong></p>
-                        </div>
-                    </div>
+            <div class="mb-3">
+                <label class="form-label">Select Service Staff:</label>
+                <input type="text" class="form-control" placeholder="Enter Product name / SKU / Scan bar code">
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between mt-3">
+                <div>
+                    <p>Items: <strong id="total_items">0.00</strong></p>
+                    <p>Discount (-): <strong>0.00</strong></p>
                 </div>
-
-                <!-- Right Section -->
-                <div class="w-50">
-                    <div class="d-flex mb-3">
-                        <button class="btn btn-primary mx-2" style="width: 200px;">Category</button>
-                        <button class="btn btn-primary" style="width: 200px;">Brands</button>
-                    </div>
-                    <div class="row row-cols-4 g-2" id="product-container">
-                    </div>
+                <div>
+                    <p>Total: <strong id="total_price">0.00</strong></p>
+                    <p>Shipping (+): <strong>0.00</strong></p>
                 </div>
             </div>
         </div>
 
+        <!-- Right Section -->
+        <div class="w-50">
+            <div class="d-flex mb-3">
+                <button class="btn btn-primary mx-2" style="width: 200px;">Category</button>
+                <button class="btn btn-primary" style="width: 200px;">Brands</button>
+            </div>
+            <div class="row row-cols-4 g-2" id="product-container">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+        
+
         <!-- Footer -->
-        <footer class="d-flex justify-content-between align-items-center py-3 mt-auto">
+        <footer class="d-flex justify-content-between align-items-center py-3 mt-5">
             <!-- Left Side: Action Buttons -->
             <div>
                 <button class="btn btn-secondary me-2">Quotation</button>
@@ -649,8 +656,9 @@
         </footer>
 
     </div>
-    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <script src="./script/index//quantity.js"></script>
     

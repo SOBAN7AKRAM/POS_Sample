@@ -5,197 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Display</title>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        body.bg-dark {
-            background-color: #121212; /* Dark background color */
-        }
-
-        body.bg-dark .navbar-dark-blue {
-            background-color: #1c1c1c; /* Darker sidebar */
-        }
-
-        body.bg-dark .navbar-dark-blue .nav-link {
-            color: #f8f9fa; /* Light text in dark mode */
-        }
-
-        body.bg-dark .navbar-dark-blue .nav-link:hover {
-            background-color: #fd7e14; /* Orange hover */
-            color: #fff;
-        }
-
-        body.bg-dark .navbar-dark-blue .nav-item.active .nav-link {
-            background-color: #fd7e14;
-            color: white;
-        }
-
-        body.bg-dark .container {
-            background-color: #1e1e1e; /* Dark container */
-            color: #f8f9fa; /* Light text for dark container */
-        }
-
-        body.bg-dark .table {
-            background-color: #333; /* Dark table */
-            color: #f8f9fa; /* Light text in table */
-        }
-
-        body.bg-dark .table th,
-        body.bg-dark .table td {
-            border-color: #444; /* Dark borders */
-        }
-
-        body.bg-dark .table th {
-            background-color: #555; /* Dark background for headers */
-        }
-
-        body.bg-dark .sub-header,
-        body.bg-dark .footer {
-            color: #f8f9fa; /* Light text for subheader and footer */
-        }
-
-        body.bg-dark .footer {
-            background-color: #121212; /* Dark footer */
-        }
-
-        body.bg-dark .btn {
-            background-color: #444; /* Dark button background */
-            color: #f8f9fa; /* Light text on buttons */
-        }
-
-        body.bg-dark .btn:hover {
-            background-color: #fd7e14; /* Orange hover for dark buttons */
-            color: #fff;
-        }
-
-        body.bg-dark .empty-cart {
-            color: #f8f9fa; /* Light text for empty cart message */
-        }
-
-        .navbar-dark-blue {
-            background-color: #002f6c; /* Darker blue for the navbar */
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 170px;
-            z-index: 100;
-        }
-
-        .btn {
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #fd7e14; /* Orange hover */
-            color: #fff;
-        }
-
-        .navbar-dark-blue .nav-link {
-            color: white;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .navbar-dark-blue .nav-link:hover {
-            background-color: #fd7e14; /* Orange hover */
-            color: #fff;
-        }
-
-        .navbar-dark-blue .nav-item.active .nav-link {
-            background-color: #fd7e14;
-            color: white;
-        }
-
-        .icon-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .icon-container i {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .container {
-            margin-left: 200px;
-            padding: 20px;
-            flex-grow: 1;
-        }
-
-        .header {
-            padding: 5px;
-            text-align: center;
-        }
-
-        .header h4 {
-            margin: 0;
-            color: #212529;
-            text-align: left;
-        }
-
-        .sub-header {
-            text-align: left;
-            margin: 10px 0;
-            color: #6c757d;
-        }
-
-        .table-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .table {
-            width: 90%;
-        }
-
-        .table th {
-            text-align: center;
-            background-color: #e9ecef;
-        }
-       
-        .empty-cart {
-            text-align: center;
-            color: #6c757d;
-            font-weight: bold;
-        }
-        body.bg-dark .empty-cart {
-    color: black !important;  /* Ensure the color is black in dark mode */
-}
-        .footer {
-            border-top: 1px solid #dee2e6;
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9rem;
-            background-color: #f8f9fa;
-            margin-top: auto;
-        }
-
-        .footer span {
-            margin: 0 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/customer.css">
 </head>
 
 <body>
 
     <!-- Sidebar -->
-    <div class="navbar-dark-blue text-white d-flex flex-column p-3">
+    <div class="navbar-dark-blue text-white d-flex flex-column p-3 vh-100 position-fixed" style="width: 12%;">
         <div class="icon-container">
             <i class="fa-solid fa-cogs"></i>
             <a href="setting.html">
@@ -205,22 +25,26 @@
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item mt-4">
                 <a href="index.html" class="nav-link text-white ">
-                    <i class="fa-solid fa-dollar-sign my-2"></i> Sales
+                    <i class="fa-solid fa-dollar-sign my-2"></i> 
+                    Sales
                 </a>
             </li>
             <li class="nav-item mt-4">
                 <a href="register.html" class="nav-link text-white">
-                    <i class="fa-solid fa-pen-to-square my-2"></i> Register
+                    <i class="fa-solid fa-pen-to-square my-2"></i>
+                    Register
                 </a>
             </li>
             <li class="nav-item mt-4">
                 <a href="customer.html" class="nav-link text-white active">
-                    <i class="fa-solid fa-pen-to-square my-2"></i> Customer
+                    <i class="fa-solid fa-pen-to-square my-2"></i>
+                    Customer
                 </a>
             </li>
             <li class="nav-item mt-4">
                 <a href="login.html" class="nav-link text-white">
-                    <i class="fa-solid fa-right-from-bracket my-2"></i> Logout
+                    <i class="fa-solid fa-right-from-bracket my-2"></i>
+                    Logout
                 </a>
             </li>
         </ul>

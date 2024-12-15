@@ -1,0 +1,353 @@
+body.bg-dark {
+    color: white !important;
+    background-color: black !important;
+}
+
+
+.navbar-dark-blue {
+    background-color: #002f6c;
+    /* Original light sidebar background */
+    height: 100vh;
+}
+
+.btn {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #fd7e14;
+    color: #fff;
+}
+
+.navbar-dark-blue .nav-link {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-dark-blue .nav-link:hover {
+    background-color: #fd7e14;
+    color: #fff;
+}
+
+.navbar-dark-blue .nav-item.active .nav-link {
+    background-color: #fd7e14;
+    color: white;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    left: 170px;
+}
+
+footer button {
+    transition: background-color 0.3s ease;
+}
+
+.icon-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.icon-container i {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+
+
+/* Dark Mode (when body.bg-dark is applied) */
+body.bg-dark {
+ background-color: black;
+ color: white;
+}
+
+/* Sidebar (Dark Mode) */
+body.bg-dark .navbar-dark-blue {
+    background-color: #1e1e1e;
+    /* Dark sidebar background */
+    color: white;
+}
+
+body.bg-dark .navbar-dark-blue .nav-link,
+body.bg-dark .navbar-dark-blue .nav-item.active .nav-link {
+    color: white;
+}
+
+body.bg-dark .navbar-dark-blue .nav-link:hover {
+    background-color: #fd7e14;
+    color: #fff;
+}
+
+body.bg-dark .navbar-dark-blue .nav-item.active .nav-link {
+    background-color: #fd7e14;
+    color: white;
+}
+
+body.d-flex {
+    background-color: black;
+}
+
+/* Buttons (Dark Mode) */
+body.bg-dark .btn {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.bg-dark .btn:hover {
+    background-color: #fd7e14;
+    color: #fff;
+}
+
+
+
+/* Footer (Dark Mode) */
+body.bg-dark footer {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+body.bg-dark footer button {
+    transition: background-color 0.3s ease;
+}
+
+/* Icon container (Dark Mode) */
+body.bg-dark .icon-container i {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* Table (Dark Mode) */
+body.bg-dark .table {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+
+body.bg-dark .table th,
+body.bg-dark .table td {
+    border-color: #444;
+}
+
+body.bg-dark .table-bordered {
+    border-color: #444;
+}
+
+/* Cards (Dark Mode) */
+body.bg-dark .card {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+
+body.bg-dark .card .card-body {
+    background-color: #333;
+}
+
+
+
+.payment-summary {
+    background-color: #ff9800;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.payment-summary div {
+    margin-bottom: 10px;
+}
+
+.btn-custom {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: #e68900;
+}
+
+
+/* Light Mode */
+body.light-mode {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+body.light-mode .modal-content {
+    background-color: #fff;
+    color: #000;
+}
+
+body.light-mode .btn-custom {
+    background-color: #007bff;
+    color: white;
+}
+
+body.light-mode .modal-header {
+    background-color: #007bff;
+    color: white;
+}
+
+body.light-mode .form-control {
+    background-color: #fff;
+    color: #000;
+}
+
+body.light-mode .form-select {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #343a40;
+    color: #fff;
+}
+
+body.dark-mode .modal-content {
+    background-color: #495057;
+    color: #fff;
+}
+
+body.dark-mode .btn-custom {
+    background-color: #28a745;
+    color: white;
+}
+
+body.dark-mode .modal-header {
+    background-color: #28a745;
+    color: white;
+}
+
+body.dark-mode .form-control {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+body.dark-mode .form-select {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+body.dark-mode .modal-body {
+    background-color: #495057;
+}
+
+/* Ensure text is visible in both modes */
+body.light-mode,
+body.dark-mode {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Ensures the footer sticks to the bottom */
+
+
+
+
+.modal-content {
+    position: relative;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h3 {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.tabs {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+    justify-content: space-around;
+}
+
+.tab {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.tab.active {
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+}
+
+.tab-content {
+    display: none;
+    margin-top: 10px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+table th,
+table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.close-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 4px;
+}
+
+.close-btn:hover {
+    background: darkred;
+}
+
+.close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #000;
+}
+
+.close-icon:hover {
+    color: red;
+}
+
+
+
+.product-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.quantity-input {
+    text-align: center;
+    width: 50px;
+    /* Reduced input width */
+    padding: 5px;
+}
+
+.remove-btn {
+    color: red;
+    font-size: 1.2rem;
+    cursor: pointer;
+}

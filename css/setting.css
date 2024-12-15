@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar-dark-blue {
+    background-color: #002f6c;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 170px;
+    z-index: 100;
+}
+
+.navbar-dark-blue .nav-link {
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-dark-blue .nav-link:hover {
+    background-color: #fd7e14;
+    color: #fff;
+}
+
+.navbar-dark-blue .nav-item.active .nav-link {
+    background-color: #fd7e14;
+    color: white;
+}
+
+.container {
+    margin-left: 200px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.header {
+    padding: 5px;
+    text-align: center;
+}
+
+.header h4 {
+    margin: 0;
+    color: #212529;
+    text-align: left;
+}
+
+.sub-header {
+    text-align: left;
+    margin: 10px 0;
+    color: #6c757d;
+}
+
+.settings-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-check {
+    margin-bottom: 15px;
+}
+
+.footer {
+    border-top: 1px solid #dee2e6;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    background-color: #f8f9fa;
+    margin-top: auto;
+}
+
+/* Dark Mode specific styles */
+body.bg-dark {
+    background-color: #343a40 !important;
+}
+
+body.bg-dark .navbar-dark-blue {
+    background-color: #222 !important;
+}
+
+body.bg-dark .container {
+    background-color: #495057;
+    color: white;
+}
+
+body.bg-dark .settings-container {
+    background-color: #6c757d;
+    color: white;
+}
+
+body.bg-dark .footer {
+    background-color: #222;
+    color: white;
+}
+
+body.bg-dark .form-control {
+    background-color: #495057;
+    color: white;
+}
+
+body.bg-dark .form-check-label {
+    color: white;
+}
+
+body.bg-dark .btn-primary {
+    background-color: #fd7e14;
+    border-color: #fd7e14;
+}
+
+body.bg-dark .btn-primary:hover {
+    background-color: #e66700;
+    border-color: #e66700;
+}

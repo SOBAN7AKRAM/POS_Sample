@@ -1,0 +1,328 @@
+body.bg-dark {
+    color: white !important;
+    background-color: black !important;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body.bg-dark {
+    background-color: #121212; /* Dark background color */
+}
+
+body.bg-dark .navbar-dark-blue {
+    background-color: #1c1c1c; /* Darker sidebar */
+}
+
+body.bg-dark .navbar-dark-blue .nav-link {
+    color: #f8f9fa; /* Light text in dark mode */
+}
+
+body.bg-dark .navbar-dark-blue .nav-link:hover {
+    background-color: #fd7e14; /* Orange hover */
+    color: #fff;
+}
+
+body.bg-dark .navbar-dark-blue .nav-item.active .nav-link {
+    background-color: #fd7e14;
+    color: white;
+}
+
+body.bg-dark .container {
+    background-color: #1e1e1e; /* Dark container */
+    color: #f8f9fa; /* Light text for dark container */
+}
+
+body.bg-dark .table {
+    background-color: #333; /* Dark table */
+    color: #f8f9fa; /* Light text in table */
+}
+
+body.bg-dark .table th,
+body.bg-dark .table td {
+    border-color: #444; /* Dark borders */
+}
+
+body.bg-dark .table th {
+    background-color: #555; /* Dark background for headers */
+}
+
+body.bg-dark .sub-header,
+body.bg-dark .footer {
+    color: #f8f9fa; /* Light text for subheader and footer */
+}
+
+body.bg-dark .footer {
+    background-color: #121212; /* Dark footer */
+}
+
+body.bg-dark .btn {
+    background-color: #444; /* Dark button background */
+    color: #f8f9fa; /* Light text on buttons */
+}
+
+body.bg-dark .btn:hover {
+    background-color: #fd7e14; /* Orange hover for dark buttons */
+    color: #fff;
+}
+
+body.bg-dark .empty-cart {
+    color: #f8f9fa; /* Light text for empty cart message */
+}
+
+.navbar-dark-blue {
+    background-color: #002f6c; /* Darker blue for the navbar */
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 170px;
+    z-index: 100;
+}
+
+.btn {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #fd7e14; /* Orange hover */
+    color: #fff;
+}
+
+.navbar-dark-blue .nav-link {
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-dark-blue .nav-link:hover {
+    background-color: #fd7e14; /* Orange hover */
+    color: #fff;
+}
+
+.navbar-dark-blue .nav-item.active .nav-link {
+    background-color: #fd7e14;
+    color: white;
+}
+
+.btn {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #fd7e14; /* Orange hover */
+    color: #fff;
+}
+
+.container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    color: #000;
+}
+
+.summary .row {
+    color: black;
+    
+}
+
+@media (prefers-color-scheme: dark) {
+    .summary .row {
+        background-color: black;
+        color: white;
+    }
+}
+
+.footer {
+    margin-top: 20px;
+    text-align: right;
+    color: #000;
+}
+/* =================== Responsive Media Queries =================== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212; /* Default dark mode background */
+        color: #e0e0e0; /* Default text */
+    }
+
+    .navbar-dark-blue {
+        background-color: #333;
+    }
+
+    .container {
+        background: #1e1e1e;
+        color: #e0e0e0;
+    }
+
+    .table th, .table td {
+        border-color: #555;
+    }
+
+    .table-dark {
+        background-color: #444;
+    }
+
+    .footer button {
+        background-color: #333;
+        color: #e0e0e0;
+    }
+
+    .footer button:hover {
+        background-color: #fd7e14;
+        color: #fff;
+    }
+
+    .summary .row:nth-child(odd) {
+        background-color: #333;
+    }
+
+    .navbar-dark-blue .nav-link {
+        color: #e0e0e0;
+    }
+
+    .navbar-dark-blue .nav-link:hover {
+        background-color: #fd7e14;
+        color: #fff;
+    }
+}
+
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #000;
+    background-color: #f4f6f9; /* Light mode background */
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.modal-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.table th, .table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f8f9fa; /* Light gray for odd rows */
+}
+.table-dark th {
+    background-color: #343a40;
+    color: #fff;
+    border-color: #454d55;
+}
+
+.summary {
+    background-color: #f8f9fa;
+    margin-top: 20px;
+}
+.summary .row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 0;
+}
+
+
+.footer button {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.footer button:hover {
+    background-color: #fd7e14;
+    color: green;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+    
+    .container {
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-header {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .table th, .table td {
+        border-color: #444;
+    }
+    .table-striped tbody tr:nth-child(odd) {
+        background-color: #2b2b2b;
+    }
+    .table-dark th {
+        background-color: #454d55;
+        color: #fff;
+        border-color: #555;
+    }
+
+    .summary {
+        background-color: #2b2b2b;
+        border: 1px solid #444;
+    }
+    .footer button {
+        background-color: #444;
+        color: #f8f9fa;
+    }
+    .footer button:hover {
+        background-color: #fd7e14;
+        color: green;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .footer {
+        display: none; /* Hide footer buttons when printing */
+    }
+    .print-container, .print-container * {
+        visibility: visible;
+    }
+    .print-container {
+        position: absolute;
+        top: 0;
+    }
+    .table th, .table td {
+        border: 1px solid #000;
+        color: #000;
+    }
+}
+
+
+
+/* =================== Print Styles =================== */
+

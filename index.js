@@ -13,5 +13,5 @@ app.on('ready', () => {
   });
 
 
-  win.loadFile('index.html');
+  win.loadFile('login.html');
 });

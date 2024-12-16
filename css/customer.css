@@ -81,21 +81,19 @@ body.bg-dark .empty-cart {
     bottom: 0;
     width: 170px;
     z-index: 100;
+    padding: 15px; /* Add padding to the navbar */
+    box-sizing: border-box; /* Include padding in width/height */
 }
 
-.btn {
-    transition: background-color 0.3s ease, color 0.3s ease;
-     border: none;
-}
-
-.btn:hover {
-    background-color: #fd7e14; /* Orange hover */
-    color: #fff;
+.navbar-dark-blue .nav-item {
+    margin-bottom: 10px; /* Add margin between nav items */
 }
 
 .navbar-dark-blue .nav-link {
     color: white;
     transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 10px 15px; /* Adjust padding inside nav links */
+    border-radius: 5px; /* Optional for rounded corners */
 }
 
 .navbar-dark-blue .nav-link:hover {
@@ -163,9 +161,11 @@ body.bg-dark .empty-cart {
     color: #6c757d;
     font-weight: bold;
 }
+
 body.bg-dark .empty-cart {
-color: black !important;  /* Ensure the color is black in dark mode */
+    color: black !important; /* Ensure the color is black in dark mode */
 }
+
 .footer {
     border-top: 1px solid #dee2e6;
     padding: 10px;

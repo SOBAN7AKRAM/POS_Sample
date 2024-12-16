@@ -86,21 +86,19 @@ body.bg-dark .empty-cart {
     bottom: 0;
     width: 170px;
     z-index: 100;
+    padding: 15px; /* Added padding around the navbar */
+    box-sizing: border-box; /* Include padding in dimensions */
 }
 
-.btn {
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border: none;
-}
-
-.btn:hover {
-    background-color: #fd7e14; /* Orange hover */
-    color: #fff;
+.navbar-dark-blue .nav-item {
+    margin-bottom: 10px; /* Space between nav items */
 }
 
 .navbar-dark-blue .nav-link {
     color: white;
     transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 10px 15px; /* Increased padding inside nav links */
+    border-radius: 5px; /* Optional rounded corners */
 }
 
 .navbar-dark-blue .nav-link:hover {
@@ -111,15 +109,6 @@ body.bg-dark .empty-cart {
 .navbar-dark-blue .nav-item.active .nav-link {
     background-color: #fd7e14;
     color: white;
-}
-
-.btn {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #fd7e14; /* Orange hover */
-    color: #fff;
 }
 
 .container {
@@ -134,7 +123,6 @@ body.bg-dark .empty-cart {
 
 .summary .row {
     color: black;
-    
 }
 
 @media (prefers-color-scheme: dark) {
@@ -149,6 +137,7 @@ body.bg-dark .empty-cart {
     text-align: right;
     color: #000;
 }
+
 /* =================== Responsive Media Queries =================== */
 @media (prefers-color-scheme: dark) {
     body {

@@ -3,24 +3,30 @@ body.bg-dark {
     background-color: black !important;
 }
 
-
 .navbar-dark-blue {
-    background-color: #002f6c;
-    /* Original light sidebar background */
+    background-color: #002f6c; /* Sidebar background */
     height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px; /* Adjusted for better spacing */
+    z-index: 100;
+    padding: 20px 10px; /* Added padding for inner content spacing */
+    box-sizing: border-box; /* Include padding in dimensions */
 }
 
-.btn {
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #fd7e14;
-    color: #fff;
+.navbar-dark-blue .nav-item {
+    margin-bottom: 15px; /* Space between navigation items */
 }
 
 .navbar-dark-blue .nav-link {
+    display: block;
+    padding: 10px 15px; /* Increased padding for clickable area */
+    color: white;
+    text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px; /* Rounded edges for nav links */
 }
 
 .navbar-dark-blue .nav-link:hover {
@@ -33,10 +39,21 @@ body.bg-dark {
     color: white;
 }
 
+.btn {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #fd7e14;
+    color: #fff;
+}
+
 footer {
     position: absolute;
     right: 0;
-    left: 170px;
+    left: 200px; /* Matches the adjusted sidebar width */
+    padding: 10px;
+    background-color: #f1f1f1;
 }
 
 footer button {
@@ -54,19 +71,17 @@ footer button {
     color: white;
 }
 
-
-
 /* Dark Mode (when body.bg-dark is applied) */
 body.bg-dark {
- background-color: black;
- color: white;
+    background-color: black;
+    color: white;
 }
 
 /* Sidebar (Dark Mode) */
 body.bg-dark .navbar-dark-blue {
-    background-color: #1e1e1e;
-    /* Dark sidebar background */
+    background-color: #1e1e1e; /* Dark sidebar background */
     color: white;
+    padding: 20px 10px; /* Adjusted for dark mode as well */
 }
 
 body.bg-dark .navbar-dark-blue .nav-link,
@@ -82,10 +97,6 @@ body.bg-dark .navbar-dark-blue .nav-link:hover {
 body.bg-dark .navbar-dark-blue .nav-item.active .nav-link {
     background-color: #fd7e14;
     color: white;
-}
-
-body.d-flex {
-    background-color: black;
 }
 
 /* Buttons (Dark Mode) */
